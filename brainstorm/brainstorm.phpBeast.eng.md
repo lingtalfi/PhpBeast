@@ -2,7 +2,7 @@
 
 
 
-Although the beauty n beast pattern describes a general mechanism for implementing language agnostic unit testing tool,
+Although the [beauty n beast](https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md) pattern describes a general mechanism for implementing language agnostic unit testing tool,
 it does not provide clear guidelines on how to implement a Beast for a specific language.
 
 
