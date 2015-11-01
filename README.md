@@ -101,7 +101,7 @@ Related
 Dependencies
 ------------------
 
-- [lingtalfi/ArrayToTable 1.2.0](https://github.com/lingtalfi/ArrayToTable)
+- [lingtalfi/ArrayToTable 1.2.0](https://github.com/lingtalfi/ArrayToTable), if you use PrettyTestInterpreter
 
 
 
