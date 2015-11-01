@@ -12,11 +12,17 @@ class TestInterpreter implements TestInterpreterInterface
 {
 
 
+    public function __construct()
+    {
+
+    }
+
+
     public static function create()
     {
         return new static();
     }
-    
+
 
     /**
      * Executes all the tests bound to the given aggregator,
@@ -96,7 +102,7 @@ class TestInterpreter implements TestInterpreterInterface
     //------------------------------------------------------------------------------/
     // 
     //------------------------------------------------------------------------------/
-    private function printResults(array $results)
+    protected function printResults(array $results)
     {
         echo sprintf('_BEAST_TEST_RESULTS:s=%d;f=%d;e=%d;na=%d;sk=%d__',
             $results['success'],

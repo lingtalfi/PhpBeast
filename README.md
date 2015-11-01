@@ -77,6 +77,19 @@ TestInterpreter::create()->execute($agg);
 The example is quite verbose, but it illustrates the relationship between the aggregator and the interpreter perfectly.
 
 
+As of version 1.1.0, you can use the PrettyTestInterpreter class instead of the TestInterpreter class.
+The difference between both classes is that the PrettyTestInterpreter class also displays an html table with 
+color codes, which makes it easier to visualize what's going on: which tests are successes, which are failures, etc...
+
+
+Just the replace the last line of the previous example with:
+
+```php 
+PrettyTestInterpreter::create()->execute($agg);
+```
+
+
+
 
 Related
 -------------
@@ -85,10 +98,23 @@ Related
 
 
 
+Dependencies
+------------------
+
+- [lingtalfi/ArrayToTable 1.2.0](https://github.com/lingtalfi/ArrayToTable)
+
+
+
 
 History Log
 ------------------
     
+- 1.1.0 -- 2015-11-01
+
+    - add TestInterpreter::printResults (protected)
+    - add PrettyTestInterpreter
+        
+        
 - 1.0.0 -- 2015-10-27
 
     - initial commit
