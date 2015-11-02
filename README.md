@@ -94,7 +94,8 @@ PrettyTestInterpreter::create()->execute($agg);
 Exhausting testing
 ----------------------
 
-Rather than testing things one by one, where possible, I like to give a first array containing 
+When testing is about an equality between two values, rather than testing things one by one,
+I like to give a first array containing 
 all the values to test, and a second array containing all the expected values.
 I call this exhausting testing, and the benefits of this technique are the following:
  
