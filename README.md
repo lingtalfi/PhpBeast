@@ -91,6 +91,73 @@ PrettyTestInterpreter::create()->execute($agg);
 
 
 
+Exhausting testing
+----------------------
+
+Rather than testing things one by one, where possible, I like to give a first array containing 
+all the values to test, and a second array containing all the expected values.
+I call this exhausting testing, and the benefits of this technique are the following:
+ 
+- testing workflow is faster, because we can duplicate lines and focus on the values we want to test 
+
+
+Since 1.2.0, PhpBeast has an AuthorTestAggregator::addTestsByColumn method which implements this technique.
+The following example tests the 
+[Bat's FileSystemTool's getFileExtension](https://github.com/lingtalfi/Bat/blob/master/FileSystemTool.md#getfileextension) 
+method against the examples found in the [fileName convention page](https://github.com/lingtalfi/ConventionGuy/blob/master/nomenclature.fileName.eng.md).
+
+
+
+```php
+<?php
+
+use Bat\FileSystemTool;
+use PhpBeast\AuthorTestAggregator;
+use PhpBeast\PrettyTestInterpreter;
+
+require_once "bigbang.php";
+
+
+
+
+//------------------------------------------------------------------------------/
+// EXHAUSTING TEST DEMO
+//------------------------------------------------------------------------------/
+$agg = AuthorTestAggregator::create();
+
+$a = [
+    '/path/to/file.txt',
+    '/path/to/file.tXT',
+    '/path/to/thefile.tar.gz',
+    '/path/to/.htaccess',
+    '/path/to/.hidden.d',
+    '/path/to/.hidden.d.gz',
+];
+
+$b = [
+    'txt',
+    'tXT',
+    'gz',
+    '',
+    'd',
+    'gz',
+];
+
+
+$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg) {
+    $res = FileSystemTool::getFileExtension($value);
+    return ($expected === $res);
+});
+
+
+PrettyTestInterpreter::create()->execute($agg);
+```
+
+
+
+
+
+
 Related
 -------------
 
@@ -108,6 +175,11 @@ Dependencies
 
 History Log
 ------------------
+    
+- 1.2.0 -- 2015-11-02
+
+    - add AuthorTestAggregator
+    
     
 - 1.1.0 -- 2015-11-01
 
