@@ -96,24 +96,24 @@ class PrettyTestInterpreter extends TestInterpreter
             text-align: left;
         }
 
-        .{$this->tableName} .success {
+        .{$this->tableName} .success td  {
             background-color: green;
         }
 
-        .{$this->tableName} .failure {
+        .{$this->tableName} .failure td  {
             background-color: red;
         }
 
-        .{$this->tableName} .error {
+        .{$this->tableName} .error td {
             background-color: black;
             color: yellow;
         }
         
-        .{$this->tableName} .not_applicable {
+        .{$this->tableName} .not_applicable td  {
             background-color: orange;
         }
         
-        .{$this->tableName} .skip {
+        .{$this->tableName} .skip td  {
             background-color: white;
         }
     </style>
