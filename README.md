@@ -159,8 +159,8 @@ PrettyTestInterpreter::create()->execute($agg);
 
 
 Since 1.3.0, we can test exceptions with the AuthorTestAggregator::addExceptionTests method.
-The following example tests the StringTool::camelCase2Constant method from [Bat](https://github.com/lingtalfi/Bat), and show an 
-example of use of the addExceptionTests method.
+The following example tests the StringTool::camelCase2Constant method from [Bat](https://github.com/lingtalfi/Bat), 
+and shows an example of use of the addExceptionTests method.
 
 
 ```php
