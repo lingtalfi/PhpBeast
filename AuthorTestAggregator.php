@@ -5,6 +5,7 @@ namespace PhpBeast;
 /*
  * LingTalfi 2015-11-02
  */
+
 class AuthorTestAggregator extends TestAggregator
 {
 
@@ -21,7 +22,7 @@ class AuthorTestAggregator extends TestAggregator
      *
      * - a: values to be tested (it's recommended that you don't define the keys, see why below)
      *
-     * - bool   callable f ( mixed:value, &str:msg=null )
+     * - bool   callable f ( mixed:value, &str:msg=null, int:testNumber )
      *                  See addTest method for more details.
      *
      * - exceptionSpec: array of key => value
@@ -55,10 +56,10 @@ class AuthorTestAggregator extends TestAggregator
     {
 
         foreach ($a as $index => $value) {
-            $this->addTest(function (&$msg) use ($value, $f, $index, $exceptionSpec) {
+            $this->addTest(function (&$msg, $testNumber) use ($value, $f, $index, $exceptionSpec) {
                 $exceptionThrown = false;
                 try {
-                    call_user_func_array($f, [$value, &$msg]);
+                    call_user_func_array($f, [$value, &$msg, $testNumber]);
 
                 } catch (\Exception $e) {
 
@@ -157,7 +158,7 @@ class AuthorTestAggregator extends TestAggregator
      * a and b must have same length.
      *
      *
-     * bool     f ( mixed:value, mixed:expected, &str:msg=null )
+     * bool     f ( mixed:value, mixed:expected, &str:msg=null, int:testNumber )
      *
      * See addTest method for more details.
      *
@@ -169,8 +170,8 @@ class AuthorTestAggregator extends TestAggregator
             for ($i = 0; $i < $n; $i++) {
                 $value = array_shift($a);
                 $expected = array_shift($b);
-                $this->addTest(function (&$msg) use ($value, $expected, $f) {
-                    return call_user_func_array($f, [$value, $expected, &$msg]);
+                $this->addTest(function (&$msg, $testNumber) use ($value, $expected, $f) {
+                    return call_user_func_array($f, [$value, $expected, &$msg, $testNumber]);
                 });
             }
         }
@@ -178,6 +179,5 @@ class AuthorTestAggregator extends TestAggregator
             throw new \Exception(sprintf("Array a and b must have same length (a=%d, b=%d)", $n, count($b)));
         }
     }
-
-
+    
 }

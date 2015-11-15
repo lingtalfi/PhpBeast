@@ -40,12 +40,12 @@ class TestInterpreter implements TestInterpreterInterface
         ];
         $tryLater = 0;
 
-
+        $testNumber = 1;
         foreach ($a->getTests() as $test) {
             $msg = null;
             $type = null;
             try {
-                $ret = call_user_func_array($test, [&$msg]);
+                $ret = call_user_func_array($test, [&$msg, $testNumber]);
                 if (true === $ret) {
                     $results['success']++;
                     $type = 's';
@@ -83,7 +83,9 @@ class TestInterpreter implements TestInterpreterInterface
 
 
             // do something with msg
-            $this->onTestAfter($type, $msg);
+            $this->onTestAfter($type, $msg, $testNumber);
+            
+            $testNumber++;
         }
 
         $this->printResults($results);
@@ -94,7 +96,7 @@ class TestInterpreter implements TestInterpreterInterface
     //------------------------------------------------------------------------------/
     // 
     //------------------------------------------------------------------------------/
-    protected function onTestAfter($testType, $msg)
+    protected function onTestAfter($testType, $msg, $testNumber)
     {
 
     }

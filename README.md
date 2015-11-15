@@ -40,7 +40,7 @@ $agg = TestAggregator::create();
 /**
  * Testing that pou returns 6 when we pass an arbitrary string
  */
-$agg->addTest(function(&$msg){
+$agg->addTest(function(&$msg, $testNumber){
     if(6 === pou('blabla')){
         return true;
     }
@@ -51,7 +51,7 @@ $agg->addTest(function(&$msg){
 /**
  * Testing that pou returns 8 when we pass 2 
  */
-$agg->addTest(function(&$msg){
+$agg->addTest(function(&$msg, $testNumber){
     if(8 === pou(2)){
         return true;
     }
@@ -61,7 +61,7 @@ $agg->addTest(function(&$msg){
 /**
  * Testing that pou returns 8 when we pass string '2 fruits' 
  */
-$agg->addTest(function(&$msg){
+$agg->addTest(function(&$msg, $testNumber){
     if(8 === pou('2 fruits')){
         return true;
     }
@@ -145,7 +145,7 @@ $b = [
 ];
 
 
-$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg) {
+$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg, $testNumber) {
     $res = FileSystemTool::getFileExtension($value);
     return ($expected === $res);
 });
@@ -153,6 +153,37 @@ $agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg) {
 
 PrettyTestInterpreter::create()->execute($agg);
 ```
+
+
+Since 1.4.0, you can use the ComparisonErrorTableTool tool to display a table containing a dump
+of both the result and expected values for failing tests.
+
+This tool helps you to spot the cause of a failing test.
+ 
+Here is how you would use it in the above example:
+ 
+```
+use PhpBeast\Tool\ComparisonErrorTableTool;
+
+//...
+
+$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg, $testNumber) {
+    $res = FileSystemTool::getFileExtension($value);
+    $ret = ($expected === $res);
+    if (false === $ret) {
+        ComparisonErrorTableTool::collect($testNumber, $expected, $res);
+    }
+    return $ret;
+});
+
+
+PrettyTestInterpreter::create()->execute($agg);
+ComparisonErrorTableTool::display(); // note that the display must be AFTER the PrettyTestInterpreter.execute method
+```
+
+
+
+
 
 
 ### Testing exceptions 
@@ -202,7 +233,7 @@ $c = [
     false,
 ];
 
-$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg) {
+$agg->addTestsByColumn($a, $b, function ($value, $expected, &$msg, $testNumber) {
     $res = StringTool::camelCase2Constant($value);
     return ($expected === $res);
 });
@@ -241,6 +272,13 @@ Dependencies
 
 History Log
 ------------------
+
+
+- 1.4.0 -- 2015-11-15
+
+    - implement testNumber as the second argument of the callable of the TestAggregator::addTest method
+    - add ComparisonErrorTableTool
+    
     
 - 1.3.0 -- 2015-11-08
 

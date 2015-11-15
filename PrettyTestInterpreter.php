@@ -13,7 +13,6 @@ class PrettyTestInterpreter extends TestInterpreter
     
     private $resultsMsgs;
     private $tableName;
-    private $testIndex;
 
 
     public function __construct()
@@ -23,21 +22,16 @@ class PrettyTestInterpreter extends TestInterpreter
         $this->tableName = 'phpBeastPrettyTestInterpreterTable';
     }
 
-    public function execute(TestAggregatorInterface $a)
-    {
-        $this->testIndex = 1;
-        parent::execute($a); 
-    }
 
 
-    protected function onTestAfter($testType, $msg)
+    protected function onTestAfter($testType, $msg, $testNumber)
     {
 //        if(null === $msg){
 //            if('s' === $testType){
 //                $msg = 'ok';
 //            }
 //        }
-        $this->resultsMsgs[] = [$this->testIndex++, $testType, $msg];
+        $this->resultsMsgs[] = [$testNumber, $testType, $msg];
     }
 
     protected function printResults(array $results)

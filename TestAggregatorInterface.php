@@ -12,9 +12,9 @@ interface TestAggregatorInterface
     /**
      *
      * About the callable:
-     * 
-     * 
-     *          bool       f ( str:&msg=null )
+     *
+     *
+     *          bool       f ( str:&msg=null, int:testNumber )
      *
      * - success: is achieved when the test returns true
      * - failure: is achieved when the test returns false
@@ -25,6 +25,9 @@ interface TestAggregatorInterface
      * If msg is set to a non null value, then:
      * - if the result of the test is a success, it's value will be the success message
      * - if the result of the test is a failure, it's value will be the failure message
+     *
+     *
+     * testNumber starts at 1, and is incremented on each test.
      *
      *
      *
