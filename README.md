@@ -162,7 +162,7 @@ This tool helps you to spot the cause of a failing test.
  
 Here is how you would use it in the above example:
  
-```
+```php
 use PhpBeast\Tool\ComparisonErrorTableTool;
 
 //...
