@@ -1,12 +1,12 @@
 <?php
 
-namespace PhpBeast;
+namespace Ling\PhpBeast;
 
 /*
  * LingTalfi 2015-11-01
  */
 
-use ArrayToTable\StylizedArrayToTableUtil;
+use Ling\ArrayToTable\StylizedArrayToTableUtil;
 
 class PrettyTestInterpreter extends TestInterpreter 
 {

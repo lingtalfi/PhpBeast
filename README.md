@@ -15,7 +15,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import PhpBeast
+uni import Ling/PhpBeast
 ```
 
 How to use
@@ -31,8 +31,8 @@ In its most basic form, here is how we use the phpBeast package.
 ```php
 <?php
 
-use PhpBeast\TestAggregator;
-use PhpBeast\TestInterpreter;
+use Ling\PhpBeast\TestAggregator;
+use Ling\PhpBeast\TestInterpreter;
 
 require_once "bigbang.php";
 
@@ -120,9 +120,9 @@ method against the examples found in the [fileName convention page](https://gith
 ```php
 <?php
 
-use Bat\FileSystemTool;
-use PhpBeast\AuthorTestAggregator;
-use PhpBeast\PrettyTestInterpreter;
+use Ling\Bat\FileSystemTool;
+use Ling\PhpBeast\AuthorTestAggregator;
+use Ling\PhpBeast\PrettyTestInterpreter;
 
 require_once "bigbang.php";
 
@@ -171,7 +171,7 @@ This tool helps you to spot the cause of a failing test.
 Here is how you would use it in the above example:
  
 ```php
-use PhpBeast\Tool\ComparisonErrorTableTool;
+use Ling\PhpBeast\Tool\ComparisonErrorTableTool;
 
 //...
 
@@ -205,9 +205,9 @@ and shows an example of use of the addExceptionTests method.
 ```php
 <?php
 
-use Bat\StringTool;
-use PhpBeast\AuthorTestAggregator;
-use PhpBeast\PrettyTestInterpreter;
+use Ling\Bat\StringTool;
+use Ling\PhpBeast\AuthorTestAggregator;
+use Ling\PhpBeast\PrettyTestInterpreter;
 
 require_once "bigbang.php";
 

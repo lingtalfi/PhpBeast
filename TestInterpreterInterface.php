@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpBeast;
+namespace Ling\PhpBeast;
 
 /*
  * LingTalfi 2015-10-26

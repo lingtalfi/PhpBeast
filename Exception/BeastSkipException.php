@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpBeast\Exception;
+namespace Ling\PhpBeast\Exception;
 
 /*
  * LingTalfi 2015-10-26

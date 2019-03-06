@@ -1,12 +1,12 @@
 <?php
 
-namespace PhpBeast;
+namespace Ling\PhpBeast;
 
 /*
  * LingTalfi 2015-10-26
  */
-use PhpBeast\Exception\BeastNotApplicableException;
-use PhpBeast\Exception\BeastSkipException;
+use Ling\PhpBeast\Exception\BeastNotApplicableException;
+use Ling\PhpBeast\Exception\BeastSkipException;
 
 class TestInterpreter implements TestInterpreterInterface
 {
