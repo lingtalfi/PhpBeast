@@ -283,10 +283,15 @@ Dependencies
 
 
 
+
 History Log
 ------------------
 
 
+- 1.4.5 -- 2021-03-08
+
+    - fix typo in BnbMessageTool::printErrorResultString
+  
 - 1.4.4 -- 2021-03-08
 
     - add BnbMessageTool class

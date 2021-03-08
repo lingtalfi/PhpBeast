@@ -17,6 +17,6 @@ class BnbMessageTool
      */
     public static function printErrorResultString()
     {
-        echo 'BEAST_TEST_RESULTS:s=0;f=0;e=1;na=0;sk=0_';
+        echo '_BEAST_TEST_RESULTS:s=0;f=0;e=1;na=0;sk=0__';
     }
 }
