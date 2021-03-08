@@ -287,6 +287,10 @@ History Log
 ------------------
 
 
+- 1.4.4 -- 2021-03-08
+
+    - add BnbMessageTool class
+  
 - 1.4.3 -- 2021-03-05
 
     - update README.md, add install alternative
